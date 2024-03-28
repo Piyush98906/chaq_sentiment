@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Vibe Check</string>
+    <string name="change_password">Change Password</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="todo">TODO</string>
+    <string name="number">Number</string>
+</resources>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <!-- Scrollview for displaying positive and negative headlines -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+
+        <LinearLayout
+            android:id="@+id/headlines_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/reddit"/>
+            <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Top Headlines"
+    android:textSize="28dp"
+    android:fontFamily="@font/seg_ui_semibold"/>
+            <!-- Positive headlines -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/holo_green_dark"
+                app:cardCornerRadius="15dp"
+                android:layout_margin="20dp"
+                app:cardElevation="8dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- ImageView for the icon -->
+                    <ImageView
+                        android:id="@+id/iv_card_icon"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="4.5dp"
+                        android:src="@drawable/cirlce_emotion" />
+
+                    <!-- TextView for the text -->
+                    <TextView
+                        android:id="@+id/tv_card_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/iv_card_icon"
+                        android:text="Positive"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:text="Positive Headlines"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/holo_orange_light"
+                app:cardCornerRadius="15dp"
+                android:layout_margin="20dp"
+                app:cardElevation="8dp">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardView5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="15dp"
+                    android:layout_marginRight="3dp"
+                    android:layout_marginBottom="3dp"
+                    app:cardElevation="8dp">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- ImageView for the icon -->
+                    <ImageView
+                        android:id="@+id/neutral"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="4.5dp"
+                        android:src="@drawable/neutral_icon" />
+
+                    <!-- TextView for the text -->
+                    <TextView
+                        android:id="@+id/neutral_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/neutral"
+                        android:text="Neutral"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        />
+                    <TextView
+                        android:id="@+id/tneutral"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:text="Neutral Headlines"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                    android:fontFamily="@font/seg_ui_semibold"/>
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@android:color/holo_red_dark"
+                app:cardCornerRadius="15dp"
+                android:layout_margin="20dp"
+                app:cardElevation="8dp">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="15dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginBottom="3dp"
+                app:cardElevation="8dp">
+
+                <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <!-- ImageView for the icon -->
+                    <ImageView
+                        android:id="@+id/negative_icon"
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"
+                        android:layout_marginTop="4.5dp"
+                        android:src="@drawable/iv_card_icon_negative" />
+
+                    <!-- TextView for the text -->
+                    <TextView
+                        android:id="@+id/negative"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_toStartOf="@id/negative_icon"
+                        android:text="Negative"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/tn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:fontFamily="@font/seg_ui_semibold"
+                        android:text="Negative Headlines"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- ImageView to display the plot image -->
+    <ImageView
+        android:id="@+id/plot_image_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter" />
+
+    <Button
+        android:id="@+id/loader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/colorPrimary"
+        android:text="View Plot" />
+
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bottom_navigation"
+                app:labelVisibilityMode="labeled"
+                android:background="?android:attr/windowBackground"
+                app:menu="@menu/bottom_menu"/>
+</LinearLayout>

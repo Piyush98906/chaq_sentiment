@@ -1,0 +1,15 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Chaq_sentiment" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.Chaq_sentiment" parent="Base.Theme.Chaq_sentiment" >
+    <item name="android:statusBarColor">@color/black</item>
+    </style>
+    <style name="rating" parent="Widget.AppCompat.RatingBar">
+        <item name="colorControlActivated">@color/dialog1</item>
+        <item name="colorControlNormal">#4D000000</item>
+    </style>
+</resources>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/home"/>
+
+    <item
+        android:id="@+id/reddit"
+        android:title="Reddit"
+        android:icon="@drawable/reddit"/>
+
+    <item
+        android:id="@+id/text"
+        android:title="Text"
+        android:icon="@drawable/text"/>
+
+    <item
+        android:id="@+id/feedback"
+        android:title="Feedback"
+        android:icon="@drawable/feedback"/>
+
+    <item
+        android:id="@+id/account"
+        android:title="Account"
+        android:icon="@drawable/person_svgrepo_com"/>
+
+</menu>
