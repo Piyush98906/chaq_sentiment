@@ -98,7 +98,7 @@
                 android:layout_marginRight="48dp"/>
 
             <CheckBox
-                android:buttonTint="@color/colorBlack"
+                android:id="@+id/rem"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="48dp"
@@ -106,7 +106,9 @@
                 android:fontFamily="@font/seg_ui_semibold"
                 android:text="Remember me"
                 android:textColor="@color/colorTextBlack"
-                android:textSize="18dp" />
+                android:buttonTint="@color/chec"
+                android:textSize="18sp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"

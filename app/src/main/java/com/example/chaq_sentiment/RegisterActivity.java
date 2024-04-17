@@ -18,6 +18,8 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.Random;
+
 
 public class RegisterActivity extends AppCompatActivity {
     DBHelper DB = new DBHelper(this);
@@ -72,13 +74,15 @@ public class RegisterActivity extends AppCompatActivity {
                 String repassword=conpass.getText().toString();
                 String name=full_name.getText().toString();
                 String number=phone1.getText().toString();
+                Random random=new Random();
+                String id= String.valueOf(random.nextInt(999999999));
                 if (user.isEmpty() || password.isEmpty() || repassword.isEmpty() || name.isEmpty() ||number.equals("")){
                     Toast.makeText(RegisterActivity.this,"Please fill all the fields",Toast.LENGTH_SHORT).show();
                 }else
                 if(password.equals(repassword)){
                     boolean checkuser=DB.checkuser(user);
                     if(!checkuser) {
-                        boolean insert = DB.insertdata(user, password,name,number);
+                        boolean insert = DB.insertdata(id,user, password,name,number);
                         if (insert) {
                             Toast.makeText(RegisterActivity.this, "Registered Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);

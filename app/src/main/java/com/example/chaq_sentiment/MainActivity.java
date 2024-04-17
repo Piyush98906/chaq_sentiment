@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
     Button login;
     TextView register;
     DBHelper DB;
+    SharedPreferences sharedPref;
+    CheckBox rememberMe;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         pass=(EditText) findViewById(R.id.password1);
         login=(Button) findViewById(R.id.login);
         register = findViewById(R.id.register);
+        rememberMe=findViewById(R.id.rem);
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -39,27 +44,42 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        sharedPref = getSharedPreferences("loginPrefs", Context.MODE_PRIVATE);
+
+        // Check if "Remember Me" checkbox was previously checked
+        boolean isRemembered = sharedPref.getBoolean("remembered", false);
+        if (isRemembered) {
+            String savedUsername = sharedPref.getString("username", "");
+            user.setText(savedUsername);
+            rememberMe.setChecked(true);
+        }
         DB=new DBHelper(this);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = user.getText().toString();
                 String password = pass.getText().toString();
-                if (username.equals("")||password.equals("")){
-                    Toast.makeText(MainActivity.this,"Please Enter All The Field",Toast.LENGTH_SHORT).show();
-                }else{
-                    Boolean chkusrpass=DB.checkusernamepassword(username,password);
-                    if (chkusrpass==true){
+                if (username.equals("") || password.equals("")) {
+                    Toast.makeText(MainActivity.this, "Please Enter All The Fields", Toast.LENGTH_SHORT).show();
+                } else {
+                    Boolean chkusrpass = DB.checkusernamepassword(username, password);
+                    if (chkusrpass) {
                         Toast.makeText(MainActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                        Intent in = new Intent(MainActivity.this,HomeActivity.class);
-                        startActivity(in);
-                        // Get SharedPreferences using Context
-                        SharedPreferences sharedPref = getSharedPreferences("send", Context.MODE_PRIVATE);
-                        SharedPreferences.Editor editor = sharedPref.edit();
-                        editor.putString("username", username);
-                        editor.apply();
-                    }
-                    else {
+                        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+                        startActivity(intent);
+
+                        // Save username to SharedPreferences if "Remember Me" checkbox is checked
+                        if (rememberMe.isChecked()) {
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.putBoolean("remembered", true);
+                            editor.putString("username", username);
+                            editor.apply();
+                        } else {
+                            // Clear stored data if "Remember Me" checkbox is unchecked
+                            SharedPreferences.Editor editor = sharedPref.edit();
+                            editor.clear().apply();
+                        }
+                    } else {
                         Toast.makeText(MainActivity.this, "Invalid Credentials", Toast.LENGTH_SHORT).show();
                     }
                 }

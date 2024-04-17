@@ -35,16 +35,18 @@
                     android:textColor="@color/black"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"/>
+
                 <TextView
-                   android:layout_marginTop="2dp"
-                    android:text="PID:362Hb458760"
-                    android:textSize="13sp"
-                    android:textStyle="normal"
+                    android:id="@+id/iddetails"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:layout_marginBottom="10dp"
                     android:gravity="center"
+                    android:text="PID:362Hb458760"
                     android:textColor="#5C5A5A"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
+                    android:textSize="13sp"
+                    android:textStyle="normal" />
                 <View
                     android:background="#79D6D1D1"
                     android:layout_width="match_parent"

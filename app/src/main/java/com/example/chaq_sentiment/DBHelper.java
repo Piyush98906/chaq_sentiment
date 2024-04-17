@@ -23,7 +23,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
-        MyDB.execSQL("create Table users(username TEXT primary key,password TEXT,name TEXT,number TEXT)");
+        MyDB.execSQL("create Table users(id Integer ,username TEXT primary key,password TEXT,name TEXT,number TEXT)");
         MyDB.execSQL("create Table past_words(username TEXT, word TEXT, date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
     }
 
@@ -34,9 +34,10 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(MyDB);
     }
 
-    public boolean insertdata(String username,String password,String name,String number){
+    public boolean insertdata(String id,String username,String password,String name,String number){
         SQLiteDatabase MyDB=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
+        cv.put("id",id);
         cv.put("username",username);
         cv.put("password",password);
         cv.put("number", number);
@@ -66,8 +67,9 @@ public class DBHelper extends SQLiteOpenHelper {
             return false;
     }
     public Cursor getData(String username) {
+
         SQLiteDatabase MyDB = this.getWritableDatabase();
-        return MyDB.rawQuery("select name, number,username,password from users where username=?", new String[]{username});
+        return MyDB.rawQuery("select id,name, number,username,password from users where username=?", new String[]{username});
     }
     public boolean insertPastWord(String username, String word) {
         SQLiteDatabase MyDB = this.getWritableDatabase();
