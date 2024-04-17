@@ -107,6 +107,7 @@
                 android:text="Remember me"
                 android:textColor="@color/colorTextBlack"
                 android:buttonTint="@color/chec"
+                android:button="@drawable/tick"
                 android:textSize="18sp" />
 
 
