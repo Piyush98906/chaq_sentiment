@@ -9,7 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import java.sql.SQLClientInfoException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -24,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase MyDB) {
         MyDB.execSQL("create Table users(id Integer ,username TEXT primary key,password TEXT,name TEXT,number TEXT)");
-        MyDB.execSQL("create Table past_words(username TEXT, word TEXT, date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP)");
+        MyDB.execSQL("create Table past_words(username TEXT, word TEXT, date_added TIME)");
     }
 
     @Override
@@ -72,20 +74,23 @@ public class DBHelper extends SQLiteOpenHelper {
         return MyDB.rawQuery("select id,name, number,username,password from users where username=?", new String[]{username});
     }
     public boolean insertPastWord(String username, String word) {
+        Calendar calendar = Calendar.getInstance();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm"); // Define your desired time format
+        String currentTime = dateFormat.format(calendar.getTime());
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put("username", username);  // Set the username
         cv.put("word", word);
+        cv.put("date_added",currentTime);
         long res = MyDB.insert("past_words", null, cv);
         MyDB.close();
         return res != -1;
     }
 
-
     public List<PastWord> getAllPastWords(String username) {
         List<PastWord> pastWords = new ArrayList<>();
         SQLiteDatabase MyDB = this.getReadableDatabase();
-        Cursor cursor = MyDB.rawQuery("SELECT word, strftime('%H:%M', date_added)FROM past_words WHERE username = ?", new String[]{username});
+        Cursor cursor = MyDB.rawQuery("SELECT word,  strftime('%H:%M',date_added) FROM past_words WHERE username = ?", new String[]{username});
         // HashMap to store word and its latest timestamp
         HashMap<String, String> wordMap = new HashMap<>();
 

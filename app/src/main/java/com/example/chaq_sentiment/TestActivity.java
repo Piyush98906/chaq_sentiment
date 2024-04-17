@@ -1,5 +1,6 @@
 package com.example.chaq_sentiment;
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -73,6 +74,15 @@ public class TestActivity extends AppCompatActivity {
                         dialog.dismiss();
                     }
                 }, 1500);
+            }
+        });
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView logtext=findViewById(R.id.logingtext);
+        logtext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(TestActivity.this,MainActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
     }
